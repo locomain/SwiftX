@@ -3,7 +3,6 @@ import XCTest
 
 class SwiftXTests: XCTestCase {
     func main() {
-
     }
     
     static var allTests : [(String, (SwiftXTests) -> () throws -> Void)] {

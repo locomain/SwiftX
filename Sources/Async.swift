@@ -11,6 +11,9 @@ import Foundation
     import Dispatch
 #endif
 
+///
+///
+///
 func ~><T>(async: @escaping ()->T,main: @escaping (T)->()){
      DispatchQueue(label: "concurrent-worker", attributes: .concurrent).async{
         let res = async();

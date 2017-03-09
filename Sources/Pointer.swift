@@ -11,23 +11,30 @@ import Foundation
     import Dispatch
 #endif
 
-prefix func *- <T>(val: T) -> Pointer<T> {
-    var count = 1
-    if let st = val as? String{
-        count = st.characters.count
-    }
-    if let st = val as? Array<Any>{
-        count = st.count
-    }
-    return Pointer<T>.createPointer(val: val, capacity: count)
+///
+/// Creates pointer of predefined value
+///
+prefix func *- <T>(val: inout T) -> Pointer<T> {
+    return Pointer<T>.create(val: &val)
 }
 
+///
+/// UnsafeMutablePointer is closest to the traditional typed pointer
+///
 typealias Pointer<T> = UnsafeMutablePointer<T>
 
 extension UnsafeMutablePointer{
-    static func createPointer<T>(val:T,capacity: Int)->Pointer<T>{
-        let pointer:Pointer<T> = Pointer.allocate(capacity: capacity)
-        pointer.pointee = val
-        return pointer
+    ///
+    /// Creates pointer with empty pointee
+    ///
+    static func create<T>(capacity: Int)->Pointer<T>{
+        return Pointer<T>.allocate(capacity: capacity)
+    }
+    ///
+    /// Creates pointer of predefined value
+    ///
+    static func create<T>(val: Pointer<T>) ->Pointer<T>{
+        return val
     }
 }
+
