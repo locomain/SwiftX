@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 
-  s.name         = "SwiftySwift"
+  s.name         = "SwiftyArrow"
   s.version      = "1.0.2"
   s.summary      = "Library that aims for easy pointers use and async tasks"
   s.description  = "Swift library that aims for easy pointers use and async tasks"
